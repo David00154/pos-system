@@ -7,7 +7,7 @@
 	"scripts": {
 		"server:start": "cd packages/server && npm start",
 		"server:dev": "cd packages/server && npm run dev",
-		"web:start": "cd packages/web && npm run build && npm run preview",
+		"web:start": "cd packages/web && npm run build && npm run preview --port $PORT --host",
 		"web:dev": "cd packages/web && npm run dev",
 		"dev": "npm-run-all --parallel server:dev web:dev",
 		"start": "npm-run-all --parallel server:start web:start"
