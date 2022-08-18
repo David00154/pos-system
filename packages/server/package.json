@@ -1,16 +1,19 @@
 {
-	"name": "server",
+	"name": "@pos-system/server",
 	"version": "1.0.0",
 	"license": "MIT",
 	"main": "index.ts",
 	"private": true,
 	"scripts": {
 		"dev": "nodemon --exec ts-node index.ts",
-		"start":"ts-node index.ts"
+		"start": "ts-node index.ts"
 	},
 	"dependencies": {
+		"@pos-system/web": "^0.0.0",
 		"@prisma/client": "^4.2.1",
 		"@trpc/server": "^9.27.0",
+		"@types/cors": "^2.8.12",
+		"cors": "^2.8.5",
 		"express": "^4.17.1",
 		"nodemon": "^2.0.19",
 		"prisma": "^4.2.1",

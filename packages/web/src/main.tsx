@@ -1,18 +1,13 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {BrowserRouter, Route, Routes} from "react-router-dom"
-import './index.css'
-
-const Home = () => <h1>Hello</h1>
-const Home2= () => <h1>Hello2</h1>
+import '~/styles/index.css'
+import "flowbite"
+import '~/styles/walletAdapter.css'
+import App from './App'
+import { Flowbite } from 'flowbite-react'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/app" element={<Home2 />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+<Flowbite>
+    <App />
+</Flowbite>
 )
+// 

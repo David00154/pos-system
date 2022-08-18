@@ -7,13 +7,13 @@
 	"scripts": {
 		"server:start": "cd packages/server && npm start",
 		"server:dev": "cd packages/server && npm run dev",
-		"web:start": "cd packages/web && npm run build && npm run preview --host",
+		"web:start": "cd packages/web && npm run preview --host",
 		"web:dev": "cd packages/web && npm run dev",
 		"dev": "npm-run-all --parallel server:dev web:dev",
-		"start": "npm-run-all --parallel --omit=dev server:start web:start"
+		"web:build": "cd packages/web && npm run build",
+		"start": "npm-run-all --parallel --omit=dev server:start web:build web:start"
 	},
 	"dependencies": {
-		"concurrently": "^7.3.0",
 		"npm-run-all": "^4.1.5"
 	}
 }
