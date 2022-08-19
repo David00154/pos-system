@@ -1,32 +1,79 @@
-import React from 'react'
+import React, { FC, ReactElement, useState } from 'react'
+import { IoLogOutOutline, IoSettingsOutline } from 'react-icons/io5'
+import { BsPalette, BsShopWindow } from 'react-icons/bs'
+import { RiArrowDownSLine, RiShoppingCartLine, RiHomeSmile2Line } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 
-const Sidebar = () => {
+type DropDown = {
+    opened: boolean;
+    items: Link[]
+}
+
+type Link = {
+    url: string;
+    icon?: ReactElement;
+    text: string;
+    dropDown?: DropDown;
+}
+
+const links: Link[] = [
+    {
+        url: '',
+        icon: <RiHomeSmile2Line size={23} className="text-custom-gray" />,
+        text: 'Dashboard'
+    },
+    {
+        url: 'orders',
+        icon: <RiShoppingCartLine size={23} className="text-custom-gray" />,
+        text: 'Orders'
+    },
+    {
+        url: 'products',
+        icon: <BsShopWindow size={23} className="text-custom-gray" />,
+        text: 'Products'
+    },
+    {
+        url: 'managers',
+        icon: <></>,
+        text: 'Managers'
+    },
+    {
+        url: 'categories',
+        icon: <BsPalette size={23} className="text-custom-gray" />,
+        text: 'Categories',
+        dropDown: {
+            items: [
+                {
+                    text: 'Create category',
+                    url: 'categories/create',
+                },
+                {
+                    text: 'All categories',
+                    url: 'categories/create'
+                }
+            ],
+            opened: false
+        }
+    },
+    {
+        url: 'settings',
+        icon: <IoSettingsOutline size={23} className="text-custom-gray" />,
+        text: 'Settings'
+    },
+]
+
+const Sidebar: FC = () => {
+    // 
+    const [routes, _] = useState(links)
     return (
         <div className='fixed left-0 w-[250px] h-full md:flex md:flex-col hidden'>
 
-            <div className="overflow-y-auto h-full py-4 px-3 bg-discord-dark-2">
+            <div className='h-14 w-full bg-discord-dark mb-auto flex flex-col justify-center px-3' />
+            <div className="overflow-y-auto h-full py-4 px-3 bg-custom-dark">
                 <ul className="space-y-2 mb-auto">
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                            {/* <svg aria-hidden="true" className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg> */}
-                            <span className="ml-3">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                            {/* <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg> */}
-                            <span className="flex-1 ml-3 whitespace-nowrap">Kanban</span>
-                            <span className="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                            {/* <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path><path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path></svg> */}
-                            <span className="flex-1 ml-3 whitespace-nowrap">Inbox</span>
-                            <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">3</span>
-                        </a>
-                    </li>
-                    
+                    {routes.map((item, i) => (
+                        <Item key={i} item={item} />
+                    ))}
                 </ul>
                 <div id="dropdown-cta" className="p-4 mt-6 bg-blue-50 rounded-lg dark:bg-blue-900" role="alert">
                     <div className="flex items-center mb-3">
@@ -43,9 +90,44 @@ const Sidebar = () => {
                 </div>
 
             </div>
-            <div className='h-12 w-full bg-discord-dark mb-auto justify-self-end' />
+            <div className='h-14 w-full bg-discord-dark mb-auto flex flex-col justify-center px-3' >
+                <Link to={'/logout'} replace className='flex items-center ml-3 text-base h-full w-full'>
+                    <IoLogOutOutline size={23} className="text-custom-gray mr-2" />
+                    <span className=' text-custom-gray text-sm'>Log Out</span>
+                </Link>
+            </div>
         </div>
     )
 }
 
 export default Sidebar
+
+const Item: FC<{ item: Link }> = ({ item: { text, url, dropDown, icon } }) => {
+    const [opened, setOpened] = useState(dropDown?.opened)
+    return (
+        <li key={Math.round(Math.random() * Date.now())}>
+            {dropDown == undefined && (
+                <Link to={url} className="flex items-center p-2 text-base font-normal text-custom-gray rounded hover:bg-discord-dark">
+                    {icon && (icon)}
+                    <span className="ml-3">{text}</span>
+                </Link>
+            )}
+            {dropDown != undefined && (
+                <>
+                    <button onClick={() => setOpened(!opened)} type='button' className="flex items-center p-2 text-base font-normal text-custom-gray rounded hover:bg-discord-dark w-full">
+                        {icon && (icon)}
+                        <span className="ml-3">{text}</span>
+                        <RiArrowDownSLine size={23} className="text-custom-gray ml-auto" />
+                    </button>
+                    {opened && (
+                        <ul className='py-2 pl-5 space-y-2'>
+                            {dropDown.items.map((__item, i) => (
+                                <Item key={i} item={__item} />
+                            ))}
+                        </ul>
+                    )}
+                </>
+            )}
+        </li>
+    )
+}

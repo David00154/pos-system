@@ -10,6 +10,7 @@ export const TestModal: FC<{children:ReactNode|ReactElement, background?:string,
                     </div>
                 </div>
             </div>
+            {/* @ts-ignore */}
             <style jsx>{`
             .dialog-modal {
                 position: fixed;

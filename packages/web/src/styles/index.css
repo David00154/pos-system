@@ -1,9 +1,10 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @layer base {
+	*::-webkit-scrollbar {
+		width: 0;
+	}
 	body {
 		@apply min-h-screen font-space-grotesk;
 		--tw-text-opacity: 1;
@@ -11,7 +12,7 @@
 		background-position: top;
 		background-repeat: no-repeat;
 		background-size: 100%;
-		
+
 		/*background-image: url('/images/wavesbg.png');*/
 	}
 }
