@@ -10,7 +10,8 @@ const Sidebar: FC = () => {
     // const [routes, _] = useState<Link[]>(links)
     const [routes] = useSidebarLinks()
     return (
-        <div className='fixed left-0 w-[250px] bg-custom-dark h-full md:flex md:flex-col hidden'>
+        // <div className='fixed left-0 w-[250px] bg-custom-dark h-full md:flex md:flex-col hidden'>
+        <div className='fixed left-0 w-[250px] bg-custom-dark h-full flex flex-col'>
 
             <div className='h-14 w-full bg-discord-dark flex flex-col justify-center px-3' />
             <div className="overflow-y-auto h-full py-4 px-3 bg-custom-dark">
