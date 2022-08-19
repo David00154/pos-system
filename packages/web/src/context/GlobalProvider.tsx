@@ -21,7 +21,7 @@ export type State = {
   storeName: string;
   loggedIn: boolean;
   email: string;
-  isCheckingOut?:boolean;
+  isCheckingOut?: boolean;
 }
 type GlobalProviderProps = {
   state: State;
@@ -37,7 +37,7 @@ const GlobalProvider: FC<{ children: ReactElement }> = ({ children }) => {
   const initialState: State = {
     storeName: '',
     loggedIn: true,
-    isCheckingOut:false,
+    isCheckingOut: false,
     email: ''
 
   }
@@ -68,11 +68,11 @@ const GlobalProvider: FC<{ children: ReactElement }> = ({ children }) => {
   return (
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect={true} onError={(e) => {
-        if(e.message){
+        if (e.message) {
           console.log(e)
           toast.error(e.message)
         }
-        }}>
+      }}>
         <WalletModalProvider>
           <Global.Provider value={{
             state,
